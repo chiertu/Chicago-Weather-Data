@@ -8,7 +8,13 @@ all_data = []
 
 for item in range(1, top_of_range):
 	downloaded_data  = urllib2.urlopen('http://www.wunderground.com/history/airport/KMDW/1948/1/' + str(item) + '/DailyHistory.html?req_city=Chicago&req_state=IL&req_statename=Illinois&reqdb.zip=60290&reqdb.magic=1&reqdb.wmo=99999&format=1')
-	csv_data = csv.reader(downloaded_data)
+	csv_data = list(csv.reader(downloaded_data))
+	#removes blank rows
+	if(csv_data[0] == []):
+		del csv_data[0]
+	#removes extra headers from each file
+	if(csv_data[0][0] == "TimeCST"):
+		del csv_data[0]
 	all_data.extend(csv_data)
 	#this will end it automatically once the top bound is reached
 	#24271 represents the number of days from Jan 1 1948 to Jan 1 2014
