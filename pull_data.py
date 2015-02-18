@@ -23,6 +23,6 @@ for item in range(1, top_of_range):
 
 print("the total number of rows is {}.".format(len(all_data)))
 
-with open(".csv", "w+") as f:
+with open("chicago_weather_data.csv", "w+") as f:
     writer = csv.writer(f)
     writer.writerows(all_data)
