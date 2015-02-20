@@ -3,8 +3,8 @@ import urllib2
 import sys
 
 #set this to a really big number to reach all days between now and Jan 1 1948
-top_of_range = 25000
-start_year = 2015
+top_of_range = 6150
+start_year = 2001
 
 all_data = []
 
@@ -19,7 +19,7 @@ for item in range(1, top_of_range):
 		del csv_data[0]
 	
 	#removes extra headers from each file
-	if(csv_data[0][0] == "TimeCST"):
+	if(csv_data[0][0] == "TimeCST" or csv_data[0][0] == "TimeCDT"):
 		del csv_data[0]
 
 	#this will end it automatically once the top bound is reached
